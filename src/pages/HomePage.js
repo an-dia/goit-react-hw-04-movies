@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class HomePage extends Component {
   state = {
@@ -22,10 +22,14 @@ export default class HomePage extends Component {
         <h1>Trending Today</h1>
         <ul>
           {trendingMovies.map(movie => (
-            <li key={movie.id}>{movie.title ? movie.title : movie.name}</li>
+            <li key={movie.id}>
+              <Link to = {`/movies/${movie.id}`}>{movie.title ? movie.title : movie.name}</Link>
+            </li>
           ))}
         </ul>
       </>
     )
   }
 }
+
+// {this.props.match.url}

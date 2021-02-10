@@ -3,6 +3,8 @@ import s from './App.module.css';
 // import Axios from 'axios';
 import HomePage from './pages/HomePage';
 import MoviesPage from './pages/MoviesPage';
+import MovieDetailsPage from './pages/MovieDetailsPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 // '/' - компонент <HomePage>, домашняя страница со списком популярных кинофильмов.
 // '/movies' - компонент <MoviesPage>, страница поиска фильмов по ключевому слову.
@@ -21,7 +23,9 @@ const App = () => {
       
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/movies" component={MoviesPage} />
+        <Route  path="/movies/:movieId" component={MovieDetailsPage} />
+        <Route  path="/movies" component={MoviesPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </>
   );
