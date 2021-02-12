@@ -12,7 +12,7 @@ const Navigation = () => {
             </NavLink></li>
           <li className={s.Item}>
             <NavLink className={s.LinkBase} activeClassName={s.LinkActive} to={routes.movies}>
-              Authors
+              Movies
             </NavLink></li>
           </ul>
         </nav>

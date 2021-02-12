@@ -1,12 +1,13 @@
-import axios from 'axios';
 import { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
+import { ImArrowLeft } from 'react-icons/im';
+import axios from 'axios';
 import routes from '../routes';
 import Cast from '../component/Cast';
 import Reviews from '../component/Reviews';
 // import defaultImg from './cat-cry.jpg';
-import { ImArrowLeft } from 'react-icons/im';
 import MoviePreview from '../component/MoviePreview';
+
 
 export default class MovieDetailsPage extends Component {
   // static defaultProps = {
@@ -14,7 +15,6 @@ export default class MovieDetailsPage extends Component {
   // };
 
   state = {
-    id: '',
     poster_path: null,
     title: null,
     name: null,
@@ -22,6 +22,8 @@ export default class MovieDetailsPage extends Component {
     overview: null,
     genres: [],
     id: null,
+    // loading: false,
+    // error: null,
   }
 
   async componentDidMount() {

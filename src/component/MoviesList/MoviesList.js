@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 // import MoviePreview from '../MoviePreview';
 
 const MoviesList = ({ movies, match, location }) => {
-  console.log('match', match.url);
+  // console.log('match', match.url);
   return (
         <ul>
           {movies.map(movie => (
