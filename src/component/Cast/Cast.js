@@ -24,6 +24,7 @@ export default class Cast extends Component {
     console.log(cast);
     return (
       <>
+        {cast &&  
         <ul>
           {cast.map(({ id, name, character, profile_path }) =>
             <li key={id}>
@@ -31,7 +32,8 @@ export default class Cast extends Component {
             <p>Actor name: {name}</p>
             <p>Character: {character}</p>
           </li>)}
-        </ul>
+          </ul>
+        }
       </>
     )
   }

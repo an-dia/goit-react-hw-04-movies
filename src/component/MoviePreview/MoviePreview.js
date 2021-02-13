@@ -5,7 +5,7 @@ const MoviePreview = ({ poster_path, title, name, vote_average, overview, genres
   const baseImgUrl = 'https://image.tmdb.org/t/p/w300'
   return (
       <div>
-          <img src={`${baseImgUrl}${poster_path}` ?? defaultImg} alt={title ? title : name} width='300'/>
+          <img src={poster_path ? `${baseImgUrl}${poster_path}` : defaultImg} alt={title ? title : name} width='300'/>
         <div>
           <h1>{title ? title : name}</h1>
           <h2>User Score:</h2>

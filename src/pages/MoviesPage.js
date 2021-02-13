@@ -10,14 +10,15 @@ export default class MoviesPage extends Component {
     movies: [],
   }
 
-  // async componentDidMount() {
-  //   //  const { movieId } = this.props.match.params;
-
-  //   const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=8e1b01f3d4ab71ddc5b71444dcf769fc&language=en-US&page=1&include_adult=false`)
-  //   console.log(response);
-
-  //   // this.setState({...response.data})
-  // }
+  async componentDidMount() {
+    const { query } = getQueryParams(this.props.location.search);
+    
+    if (query) {
+      const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=8e1b01f3d4ab71ddc5b71444dcf769fc&language=en-US&query=${query}&page=1&include_adult=false`)
+      console.log(response.data.results);
+      this.setState({ movies: response.data.results })
+    }
+  }
 
   async componentDidUpdate(prevProps, prevState) {
     //Деструктуризируем из параметров query
@@ -28,10 +29,14 @@ export default class MoviesPage extends Component {
 
     if (prevQuery !== nextQuery) {
       const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=8e1b01f3d4ab71ddc5b71444dcf769fc&language=en-US&query=${nextQuery}&page=1&include_adult=false`)
-      console.log(response.data.results);
+      // console.log(response.data.results);
       this.setState({movies: response.data.results})
     }
   }
+
+  // fetchMovies = query => {
+    
+  // }
 
   handleChangeQuery = query => {
     this.props.history.push({

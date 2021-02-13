@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 // import MoviePreview from '../MoviePreview';
 
-const MoviesList = ({ movies, match, location }) => {
+const MoviesList = ({ movies, location }) => {
   // console.log('match', match.url);
   return (
         <ul>
@@ -10,7 +10,7 @@ const MoviesList = ({ movies, match, location }) => {
             <li key={movie.id}>
               {/* <MoviePreview {...movies} /> */}
               <Link to={{
-                pathname: `${match.url}movies/${movie.id}`,
+                pathname: `/movies/${movie.id}`,
                 state: {
                   from: location,
                 }

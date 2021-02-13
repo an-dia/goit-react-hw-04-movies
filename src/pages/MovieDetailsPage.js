@@ -87,7 +87,7 @@ export default class MovieDetailsPage extends Component {
             <li> <NavLink to = {`${this.props.match.url}/reviews `}>Reviews</NavLink> </li>
           </ul>
           <Route path={`${this.props.match.path}/cast `}  component={Cast} />
-          <Route path="/movies/:movieId/reviews" component={Reviews}/>
+          <Route path={`${this.props.match.path}/reviews `} component={Reviews}/>
         </div>
       </>
       
