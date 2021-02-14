@@ -4,7 +4,7 @@ import s from './Navigation.module.css';
 
 const Navigation = () => {
   return (
-        <nav >
+        <nav className={s.wrapper}>
           <ul className={s.List}>
           <li className={s.Item}>
             <NavLink exact className={s.LinkBase} activeClassName={s.LinkActive} to={routes.home}>

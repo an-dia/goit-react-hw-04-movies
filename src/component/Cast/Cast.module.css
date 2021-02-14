@@ -1,0 +1,7 @@
+.List {
+  padding-left: 0px;
+}
+
+.Item:not(:last-child) {
+  margin-bottom: 5px;
+}

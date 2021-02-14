@@ -1,25 +1,57 @@
 import { Component } from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
+import api from '../../servises/tmdb-api';
+import LoaderSpinner from '../Loader/LoaderSpinner';
+// import axios from 'axios';
 
 export default class Reviews extends Component {
+     static propTypes = {
+    reviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        content: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+    movieId : PropTypes.string.isRequired,
+  };
   
   state = {
     reviews: [],
+    isLoaded: false,
+    error: null,
   }
 
   async componentDidMount() {
-     const { movieId } = this.props.match.params;
-    const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=8e1b01f3d4ab71ddc5b71444dcf769fc&language=en-US&page=1`)
-    // console.log(response.data.results);
+    const { movieId } = this.props.match.params;
     
-    this.setState({reviews: response.data.results})
+    api.getReviews(movieId)
+    .then((data) => {
+        this.setState({ isLoaded: true })
+        //  console.log('dataR', data);
+         if (!data.reviews.results) {
+           return Promise.reject(new Error('Sorry, unfortunately nothing was found ...'));
+         }
+         
+         this.setState({ reviews: data.reviews.results })
+       })
+      .catch(error => this.setState({ error }))
+      .finally (this.setState({ isLoaded: false, }))
+   
+
+    // const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=8e1b01f3d4ab71ddc5b71444dcf769fc&language=en-US&page=1`)
+    // // console.log(response.data.results);
+    
+    // this.setState({reviews: response.data.results})
   }
   
   render() {
-    const { reviews } = this.state;
+    const { reviews, error, isLoaded } = this.state;
 
     return (
       <>
+        {error && <h1>{error.message}</h1>}
+        {!isLoaded && <LoaderSpinner />}
         {reviews.length > 0 &&
           <ul>
             {reviews.map(({ author, content, id }) =>

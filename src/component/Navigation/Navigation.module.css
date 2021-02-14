@@ -1,6 +1,11 @@
+.wrapper {
+  text-transform: uppercase;
+}
+
 .List {
   list-style: none;
   display: flex;
+  justify-content: center;
 }
 
 .Item:not(:last-child) {
@@ -10,6 +15,11 @@
 .LinkBase {
   font-size: 20px;
   color: #2a2a2a;
+}
+
+.LinkBase:hover,
+.LinkBase:focus {
+  color: blueviolet;
 }
 
 .LinkActive {

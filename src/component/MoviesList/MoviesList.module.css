@@ -1,0 +1,13 @@
+.List {
+  text-transform: uppercase;
+  padding-left: 20px;
+}
+
+.Item:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.Link:hover,
+.Link:focus {
+  color: blueviolet;
+}

@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect  } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import s from './App.module.css';
@@ -21,14 +21,14 @@ const App = () => {
   return (
     <>
       <Layout>
-         {/* <AppBar /> */}
         <Suspense fallback={<LoaderSpinner />}>
           <Switch>
             <Route exact path={routes.home} component={HomePage} />
             <Route  path={routes.movieDetails} component={MovieDetailsPage} />
             <Route  path={routes.movies} component={MoviesPage} />
             <Route component={NotFoundPage} />
-            </Switch>
+            <Redirect to={routes.home} />
+          </Switch>
         </Suspense>
       </Layout>
       <ToastContainer position="top-center" autoClose={3000} />
