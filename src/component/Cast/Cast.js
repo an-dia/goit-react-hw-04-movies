@@ -19,8 +19,8 @@ export default class Cast extends Component {
         character: PropTypes.string.isRequired,
         profile_path: PropTypes.string.isRequired,
       }),
-    ).isRequired,
-    movieId : PropTypes.string.isRequired,
+    ),
+    movieId : PropTypes.string,
   };
 
   state = {
@@ -35,7 +35,7 @@ export default class Cast extends Component {
     api.getCasts(movieId)
     .then((data) => {
         this.setState({ isLoaded: true })
-         console.log('dataC', data);
+        //  console.log('dataC', data);
          if (!data.cast.cast) {
            return Promise.reject(new Error('Sorry, unfortunately nothing was found ...'));
          }
@@ -62,9 +62,11 @@ export default class Cast extends Component {
         <ul className={s.List}>
           {cast.map(({ id, name, character, profile_path }) =>
             <li className={s.Item} key={id}>
-            <img src={profile_path ? `https://image.tmdb.org/t/p/w300${profile_path}` : defaultImg} alt={cast.name} width='150' /> 
-            <p>Actor name: {name}</p>
-            <p>Character: {character}</p>
+            <img className={s.Img} src={profile_path ? `https://image.tmdb.org/t/p/w300${profile_path}` : defaultImg} alt={cast.name} width='150' /> 
+            <div className={s.Wrapper}>
+              <p className={s.Text}>Actor name: {name}</p>
+              <p>Character: {character}</p>
+            </div>
           </li>)}
           </ul>
         }

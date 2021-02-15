@@ -6,11 +6,12 @@ import api from '../servises/tmdb-api';
 import LoaderSpinner from '../component/Loader';
 // import axios from 'axios';
 import routes from '../routes';
-import Cast from '../component/Cast';
-import Reviews from '../component/Reviews';
+// import Cast from '../component/Cast';
+// import Reviews from '../component/Reviews';
 import MoviePreview from '../component/MoviePreview';
 
-
+const Cast = lazy(() => import('../component/Cast' /* webpackChunkName: "cast" */));
+const Reviews = lazy(() => import('../component/Reviews' /* webpackChunkName: "reviews" */));
 
 export default class MovieDetailsPage extends Component {
 
@@ -18,6 +19,7 @@ export default class MovieDetailsPage extends Component {
     poster_path: null,
     title: null,
     name: null,
+    release_date: '',
     vote_average: null,
     overview: null,
     genres: [],
@@ -66,8 +68,8 @@ export default class MovieDetailsPage extends Component {
     // console.log(this.props.match.path);
     // poster_path, title, name, vote_average, overview, genres, 
     
-    const { poster_path, title, name, vote_average, overview, genres, error, isLoaded } = this.state;
-    console.log('genresMD', genres);
+    const { poster_path, title, name, release_date, vote_average, overview, genres, error, isLoaded } = this.state;
+    // console.log('genresMD', genres);
     return (
       <div className={s.Container}>
         <button className={s.Button} type='button' onClick={this.handleGoBack}>
@@ -80,6 +82,7 @@ export default class MovieDetailsPage extends Component {
                 poster_path={poster_path}
                 title={title}
                 name={name}
+                release_date={release_date}
                 vote_average={vote_average}
                 overview={overview}
                 genres={genres}

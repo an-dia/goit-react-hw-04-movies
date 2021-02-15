@@ -2,14 +2,17 @@ import PropTypes from 'prop-types';
 import s from './MoviePreview.module.css';
 import defaultImg from '../../pages/cat-cry.jpg';
 
-const MoviePreview = ({ poster_path, title, name, vote_average, overview, genres }) => {
-  console.log('genres', genres);
+const MoviePreview = ({ poster_path, title, name, release_date, vote_average, overview, genres }) => {
+  // console.log('genres', genres);
   const baseImgUrl = 'https://image.tmdb.org/t/p/w300'
   return (
     <div className={s.Container}>
-        <img  src={poster_path ? `${baseImgUrl}${poster_path}` : defaultImg} alt={title ? title : name} width='300'/>
+        <img className={s.Img}  src={poster_path ? `${baseImgUrl}${poster_path}` : defaultImg} alt={title ? title : name} width='300'/>
       <div className={s.Wrapper}>
-        <h1 className={s.Title}>{title ? title : name}</h1>
+        <div className={s.Wrap}>
+          <h1 className={s.Title}>{title ? title : name}</h1>
+          <p className={s.TitleData}>({release_date.slice(0,4)})</p>
+        </div>
         <h2 className={s.SubTitle}>User Score:</h2>
         <p className={s.Text}>{vote_average * 10}%</p>
         <h3 className={s.SubTitle}>Overview</h3>
@@ -32,12 +35,13 @@ MoviePreview.propTypes = {
   name: PropTypes.string,
   vote_average: PropTypes.number,
   overview: PropTypes.string,
-  // genres: PropTypes.arrayOf(
-  //     PropTypes.shape({
-  //       id: PropTypes.number.isRequired,
-  //       name: PropTypes.string.isRequired,
-  //     }),
-  // ).isRequired,
+  release_date: PropTypes.string,
+  genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+  ).isRequired,
 };
 
 export default MoviePreview;

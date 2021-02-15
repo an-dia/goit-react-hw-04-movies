@@ -2,6 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import api from '../../servises/tmdb-api';
 import LoaderSpinner from '../Loader/LoaderSpinner';
+import s from './Reviews.module.css';
 // import axios from 'axios';
 
 export default class Reviews extends Component {
@@ -12,8 +13,8 @@ export default class Reviews extends Component {
         author: PropTypes.string.isRequired,
         content: PropTypes.string.isRequired,
       }),
-    ).isRequired,
-    movieId : PropTypes.string.isRequired,
+    ),
+    movieId : PropTypes.string,
   };
   
   state = {
@@ -53,10 +54,10 @@ export default class Reviews extends Component {
         {error && <h1>{error.message}</h1>}
         {!isLoaded && <LoaderSpinner />}
         {reviews.length > 0 &&
-          <ul>
+          <ul className={s.List}>
             {reviews.map(({ author, content, id }) =>
-              <li key={id}>
-                <h2>Author: {author}</h2>
+              <li className={s.Item} key={id}>
+                <h2 className={s.Title}>Author: {author}</h2>
                 <p>{content}</p>
               </li>)}
           </ul>  

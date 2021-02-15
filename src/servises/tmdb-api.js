@@ -35,7 +35,7 @@ const getSearchMovies = async (query) => {
     const { data } = await axios.get('search/movie', {
       params: {query}
     })
-    console.log('dataS', data);
+    // console.log('dataS', data);
     // test();
     return {
       movies: data,

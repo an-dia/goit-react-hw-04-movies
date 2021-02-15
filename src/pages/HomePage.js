@@ -46,17 +46,17 @@ export default class HomePage extends Component {
         <h1 className={s.Title}>Trending Today</h1>
         <MoviesList movies={movies}/>
         </>}
-        
-        {/* <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>
-              <Link to = {`/movies/${movie.id}`}>{movie.title ? movie.title : movie.name}</Link>
-            </li>
-          ))}
-        </ul> */}
       </div>
     )
   }
 }
 
 // {this.props.match.url}
+
+  // {/* <ul>
+  //         {movies.map(movie => (
+  //           <li key={movie.id}>
+  //             <Link to = {`/movies/${movie.id}`}>{movie.title ? movie.title : movie.name}</Link>
+  //           </li>
+  //         ))}
+  //       </ul> */}
