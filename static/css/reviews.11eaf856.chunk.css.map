@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/component/Reviews/Reviews.module.css"],"names":[],"mappings":"AAAA,qBACE,cACF,CAEA,qBACE,kBACF,CAEA,sBACE,kBACF","file":"reviews.11eaf856.chunk.css","sourcesContent":[".List {\r\n  padding-left: 0px;\r\n}\r\n\r\n.Item {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.Title {\r\n  margin-bottom: 10px;\r\n}\r\n"]}
