@@ -63,7 +63,7 @@ export default class MovieDetailsPage extends Component {
   }
 
   render() {
-    // console.log('location',location.state.from);
+    // console.log('location',this.props.location);
     // const { movieId } = this.props.match.params;
     // console.log(this.props.match.path);
     // poster_path, title, name, vote_average, overview, genres, 
@@ -92,8 +92,14 @@ export default class MovieDetailsPage extends Component {
         <div className={s.Wrapper}>
           <h2 className={s.Title}>Additional information</h2>
           <ul  className={s.List}>
-            <li> <NavLink className={s.LinkBase} activeClassName={s.LinkActive} to = {`${this.props.match.url}/cast `}>Cast</NavLink> </li>
-            <li> <NavLink className={s.LinkBase} activeClassName={s.LinkActive} to = {`${this.props.match.url}/reviews `}>Reviews</NavLink> </li>
+            <li> <NavLink
+              className={s.LinkBase}
+              activeClassName={s.LinkActive}
+              to={{ pathname: `${this.props.match.url}/cast `, state: { from: this.props.location }, }}>Cast</NavLink> </li>
+            <li> <NavLink
+              className={s.LinkBase}
+              activeClassName={s.LinkActive}
+              to={{ pathname: `${this.props.match.url}/reviews `, state: { from: this.props.location } }}>Reviews</NavLink> </li>
           </ul>
           <Suspense fallback={<LoaderSpinner />}>
             <Switch>
