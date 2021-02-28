@@ -95,11 +95,11 @@ export default class MovieDetailsPage extends Component {
             <li> <NavLink
               className={s.LinkBase}
               activeClassName={s.LinkActive}
-              to={{ pathname: `${this.props.match.url}/cast `, state: { from: this.props.location }, }}>Cast</NavLink> </li>
+              to={{ pathname: `${this.props.match.url}/cast `, state: { from: this.props.location?.state?.from || routes.movies } }}>Cast</NavLink> </li>
             <li> <NavLink
               className={s.LinkBase}
               activeClassName={s.LinkActive}
-              to={{ pathname: `${this.props.match.url}/reviews `, state: { from: this.props.location } }}>Reviews</NavLink> </li>
+              to={{ pathname: `${this.props.match.url}/reviews `, state: { from: this.props.location?.state?.from || routes.movies  } }}>Reviews</NavLink> </li>
           </ul>
           <Suspense fallback={<LoaderSpinner />}>
             <Switch>
